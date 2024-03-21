@@ -86,8 +86,21 @@
       <?php endif; ?>
 
       <!-- alert data sukses diedit -->
+      <?php if (isset($_GET['edit'])) : ?>
+            <?php
+            if ($_GET['edit'] == 'sukses')
+                echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                        <strong>Sukses!</strong> Data berhasil diedit!
+                        <button type='button' class='btn-close' onclick='clicking()' data-bs-dismiss='alert' aria-label='Close'></button>
+                      </div>";
+            else
+                echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                        <strong>Ups!</strong> Data gagal diedit!
+                        <button type='button' class='btn-close' onclick='clicking()' data-bs-dismiss='alert' aria-label='Close'></button>
+                      </div>";
+            ?>
+      <?php endif; ?>
       
-
             <!-- table data pasien -->
       <table class="table table-striped">
         <thead>
@@ -151,10 +164,7 @@
             <input type="text" name="edit_alamat_pasien" class="form-control" id="edit_alamat_pasien" value="<?= $dbpasien['alamat_pasien'] ?>">
           </div>
         </form>
-
-
       </div>
-
 
       <!-- modal delete pasien -->
       <div class="modal">
