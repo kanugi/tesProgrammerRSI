@@ -100,8 +100,19 @@
                       </div>";
             ?>
       <?php endif; ?>
+
+      <!--fitur filter mengurutkan umur pasien paling tua-->
       
-            <!-- table data pasien -->
+      <?php
+      $sql = "SELECT * FROM tbl_pasien";
+      $db = mysqli_connect('localhost', 'root', '', 'dbpasien');
+      $query = mysqli_query($db, $sql);
+      $data = mysqli_fetch_array($query);
+      $umur = date_diff(date_create($data['tgl_lahir_pasien']), date_create('today'))->y;
+      ?>
+
+
+      <!-- table data pasien -->
       <table class="table table-striped">
         <thead>
           <tr>
@@ -165,6 +176,10 @@
           </div>
         </form>
       </div>
+
+
+      <!-- delete pasien-->
+
 
       <!-- modal delete pasien -->
       <div class="modal">
